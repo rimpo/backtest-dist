@@ -1,0 +1,37 @@
+strategy:
+  name: Strangle
+  slippage: 0.5
+  symbol: banknifty
+  stop:
+    - type: stop_type_time
+      time: "15:20"
+  legs:
+    - lots: 3
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_spot
+        distance_from_spot: 0
+      entry:
+        - type: entry_type_time
+          time: "09:18"
+      exit:
+        - type: exit_type_time
+          time: "15:25"
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 3
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_spot
+        distance_from_spot: 0
+      entry:
+        - type: entry_type_time
+          time: "09:18"
+      exit:
+        - type: exit_type_time
+          time: "15:25"
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
