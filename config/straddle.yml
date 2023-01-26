@@ -1,10 +1,18 @@
 strategy:
-  name: Strangle
-  slippage: 0.5
+  name: Straddle
+  slippage: 1.0
   symbol: banknifty
+  # 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday
+  days_to_run: 3,4
   stop:
+    # 3 types: stop_type_time, stop_type_mtm_amount
     - type: stop_type_time
-      time: "15:20"
+      time: 15:20
+    - type: stop_type_mtm_amount
+      amount: -10000
+    # - type: stop_type_trailing_sl
+    #  enable_at_amount: 10000
+    #  difference: 1000
   legs:
     - lots: 3
       buy_or_sell: sell
