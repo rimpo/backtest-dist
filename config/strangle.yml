@@ -23,7 +23,7 @@ strategy:
         - type: exit_type_time
           time: 15:25
         - type: exit_type_ltp_loss_percent
-          percent: 40.0
+          percent: 55.0
         - type: exit_type_underlying_moved_percent
           percent: 1.0
           underlying: spot
@@ -40,7 +40,7 @@ strategy:
         - type: exit_type_time
           time: 15:25
         - type: exit_type_ltp_loss_percent
-          percent: 40.0
+          percent: 55.0
         - type: exit_type_underlying_moved_percent
           percent: 1.0
           underlying: spot
