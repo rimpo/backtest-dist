@@ -16,6 +16,11 @@ strategy:
       strike_selection:
         type: strike_selection_type_distance_from_spot
         distance_from_spot: 50
+        #type: strike_selection_type_near_ltp
+        #near_ltp: 15
+        #type: strike_selection_type_range_ltp
+        #min_ltp: 10
+        #max_ltp: 25
       entry:
         - type: entry_type_time
           time: 09:18
@@ -33,6 +38,11 @@ strategy:
       strike_selection:
         type: strike_selection_type_distance_from_spot
         distance_from_spot: -50
+        #type: strike_selection_type_near_ltp
+        #near_ltp: 15
+        #type: strike_selection_type_range_ltp
+        #min_ltp: 10
+        #max_ltp: 25
       entry:
         - type: entry_type_time
           time: 09:18
