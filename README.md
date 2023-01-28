@@ -8,7 +8,6 @@ A free backtesting tool for doing intraday strategy.
 - strategy level mtm stoploss
 - individual leg level ltp stoploss. tracking spot for stoploss
 - add as many as leg possible.
--
 
 ## Installation
 

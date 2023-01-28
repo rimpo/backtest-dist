@@ -1,26 +1,27 @@
 strategy:
-  name: Straddle
-  slippage: 1.0
+  name: Strangle
+  slippage: 1.1
   symbol: banknifty
   # 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday
-  days_to_run: 3,4
+  days_to_run: 1,2,3,4,5
   stop:
     - type: stop_type_time
-      time: 15:20
+      time: 15:25
     - type: stop_type_mtm_amount
       amount: -10000
+    # type: stop_type_
   legs:
-    - lots: 3
+    - lots: 4
       buy_or_sell: sell
       ce_or_pe: CE
       strike_selection:
         type: strike_selection_type_distance_from_spot
         distance_from_spot: 0
         #type: strike_selection_type_near_ltp
-        #near_ltp: 15
+        #near_ltp: 50
         #type: strike_selection_type_range_ltp
-        #min_ltp: 10
-        #max_ltp: 25
+        #min_ltp: 50
+        #max_ltp: 80
       entry:
         - type: entry_type_time
           time: "09:18"
@@ -28,19 +29,19 @@ strategy:
         - type: exit_type_time
           time: "15:25"
         - type: exit_type_ltp_loss_percent
-          percent: 50.0
+          percent: 40.0
 
-    - lots: 3
+    - lots: 4
       buy_or_sell: sell
       ce_or_pe: PE
       strike_selection:
         type: strike_selection_type_distance_from_spot
         distance_from_spot: 0
         #type: strike_selection_type_near_ltp
-        #near_ltp: 15
+        #near_ltp: 50
         #type: strike_selection_type_range_ltp
-        #min_ltp: 10
-        #max_ltp: 25
+        #min_ltp: 50
+        #max_ltp: 80
       entry:
         - type: entry_type_time
           time: "09:18"
@@ -48,4 +49,4 @@ strategy:
         - type: exit_type_time
           time: "15:25"
         - type: exit_type_ltp_loss_percent
-          percent: 50.0
+          percent: 40.0
