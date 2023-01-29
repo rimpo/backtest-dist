@@ -11,14 +11,19 @@ A free backtesting tool for doing intraday strategy.
 
 ## Installation
 
-### 1. Download the json from site mentioned in the discord coding channel
+### 1. Download the tick data from website
+
+Visit <http://historical.maticalgos.com> to create your username and password for the commands given below. Once you have your user ID and password, you can open command prompt in your windows PC, navigate to the folder where you have downloaded, and unzipped these files, and run the below code as,
 
 ```
-downloader.exe -username=<user-id> -password=<password> -symbol=banknifty
-downloader.exe -username=<user-id> -password=<password> -symbol=nifty
+downloader.exe -username=xyz@abc.com -password=585243 -symbol=banknifty
+downloader.exe -username=xyz@abc.com -password=585243 -symbol=nifty
 ```
 
-This need to be done only once will mostly take 20-30 mins
+open a new window of command prompt and do the same process for Nifty
+downloader.exe -username=xyz@abc.com -password=585243 -symbol=nifty
+
+Leave these two commands running for some time, as it might take 1-5 hours, or more, depending on your internet speed. Keep 10-20 GB space free in your PC for all the data of back-tests.
 
 ### 2. Imports the downloaded data to the local database
 
