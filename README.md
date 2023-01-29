@@ -72,7 +72,7 @@ output:
 
 For spot use instrument-name as `BANKNIFTY` and for future use `BANKNIFTY-I` (same is applicable for nifty)
 
-## Note
+### Notes
 
 1. downloader.exe downloads from website directly. Please don't over use it and overload the servers.
 2. All commands have -h for help please go through them
@@ -81,3 +81,5 @@ For spot use instrument-name as `BANKNIFTY` and for future use `BANKNIFTY-I` (sa
 5. To check the date ranges available or downloaded, go to /historical_data/dates_<symbol>.cfg
 6. Only windows binaries (if you need for linux/mac. Please let me know)
 7. All performance time can vary systme to system.
+
+## Calculation
