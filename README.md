@@ -46,6 +46,27 @@ strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse_bin.db -config
 
 Refer [Guide for updating Config yml](./config/README.md)
 
+## Debuggging tool
+
+search-db can be used to check the minute wise OHLC in the database for the instrument.
+
+```
+search-db -instrument-name=BANKNIFTY14MAR1929000PE -date=2019-03-14
+
+output:
+2019-03-14 09:15 OHLC 126.35 146.95 100.00 123.05
+2019-03-14 09:16 OHLC 123.55 124.95 103.25 103.25
+2019-03-14 09:17 OHLC 102.35 102.35 81.06 89.95
+2019-03-14 09:18 OHLC 89.07 96.00 84.05 84.05
+2019-03-14 09:19 OHLC 82.05 95.07 82.05 87.75
+2019-03-14 09:20 OHLC 86.00 86.00 73.06 80.95
+2019-03-14 09:21 OHLC 81.03 81.03 74.00 77.08
+2019-03-14 09:22 OHLC 76.08 78.00 70.03 78.00
+2019-03-14 09:23 OHLC 78.01 80.35 75.15 77.55
+```
+
+For spot use instrument-name as `BANKNIFTY` and for future use `BANKNIFTY-I` (same is applicable for nifty)
+
 ## Note
 
 1. downloader.exe downloads from website directly. Please don't over use it and overload the servers.

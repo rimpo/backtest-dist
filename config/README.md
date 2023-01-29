@@ -57,7 +57,7 @@ The leg can have multiple exit conditions. In case of any one condition is hit t
 | Type | Fields | Example | Descritption |
 | ----- | ----------- | ----------- | ------------ |
 | exit_type_time | time | `15:20` | leg will exit at time 15:20 |
-| exit_type_ltp_loss_percent | percent | `40.0` | leg will exit when premium price will increase by 40% from entry price |
+| exit_type_ltp_loss_percent | percent | `40.0` | leg will exit when premium price will increase by 40% from entry price. Note high will be considered for sell orders (low for buy orders) |
 | exit_type_underlying_moved_percent | percent | `1.0` | leg will exit when underlying moves by 1% |
 |  | underlying | `spot` or `future` |  |
 | exit_type_underlying_moved_points | points | `200` or `-200` | leg will exit when underlying moves by 200 or -200 |
