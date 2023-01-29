@@ -27,13 +27,14 @@ db-importer.exe -db-path=./db/log -purge
 ```
 
 purge option will delete all the current data in database (if exist)
+This process should complete in 15 mins.
 
 You are ready for running strategy.
 
 ## Usage
 
 ```
-strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse.db -config=./config/strangle.yml -output=./output.csv
+strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse_bin.db -config=./config/strangle.yml -output=./output.csv
 ```
 
 - output.csv will contain the order executed in the strategy which can be used to analyze the results.
@@ -51,3 +52,4 @@ strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse.db -config=./c
 4. The database created is of almost 6+ GB (with extension .db).
 5. To check the date ranges available or downloaded, go to /historical_data/dates_<symbol>.cfg
 6. Only windows binaries (if you need for linux/mac. Please let me know)
+7. All performance time can vary systme to system.
