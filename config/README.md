@@ -11,6 +11,7 @@ There are multiple sections in the yml. Please go through the below sections for
 | name  | Name of the strategy | straddle or strangle or `any plain text` |
 | slippage | Slippage of the strategy | 1.0 or 0.5 |
 | symbol | Symbol for which you want the strategy to run |  `nifty` or `banknifty` |
+| days_to_run | Days the strategy will run values: 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday | 3,4 (will only run on Wed and Thu )
 
 The strategy can be stopped using these stop conditions
 
