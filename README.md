@@ -44,6 +44,8 @@ strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse_bin.db -config
   - N number of legs supported.
   - dynamic strike selection (near ltp, range ltp)
 
+Refer [Guide for updating Config yml](./config/README.md)
+
 ## Note
 
 1. downloader.exe downloads from website directly. Please don't over use it and overload the servers.
