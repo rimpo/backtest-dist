@@ -1,9 +1,9 @@
 strategy:
   name: Strangle
-  slippage: 1.0
+  slippage: 1.1
   symbol: banknifty
   # 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday
-  days_to_run: 3,4
+  days_to_run: 1,2,3,4,5
   stop:
     - type: stop_type_time
       time: 15:25

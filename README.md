@@ -51,6 +51,16 @@ strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse_bin.db -config
 
 Refer [Guide for updating Config yml](./config/README.md)
 
+### Notes
+
+1. downloader.exe downloads from website directly. Please don't over use it and overload the servers.
+2. All commands have -h for help please go through them
+3. There are few files which will be generated (e.g. dates_banknifty.cfg or dates_banknifty_skipped.cfg) in local path, Please dont delete these files as these are used by the strategy command all time.
+4. The database created is of almost 6+ GB (with extension .db).
+5. To check the date ranges available or downloaded, go to /historical_data/dates_<symbol>.cfg
+6. Only windows binaries (if you need for linux/mac. Please let me know)
+7. All performance time can vary systme to system.
+
 ## Debuggging tool
 
 search-db can be used to check the minute wise OHLC in the database for the instrument.
@@ -71,15 +81,3 @@ output:
 ```
 
 For spot use instrument-name as `BANKNIFTY` and for future use `BANKNIFTY-I` (same is applicable for nifty)
-
-### Notes
-
-1. downloader.exe downloads from website directly. Please don't over use it and overload the servers.
-2. All commands have -h for help please go through them
-3. There are few files which will be generated (e.g. dates_banknifty.cfg or dates_banknifty_skipped.cfg) in local path, Please dont delete these files as these are used by the strategy command all time.
-4. The database created is of almost 6+ GB (with extension .db).
-5. To check the date ranges available or downloaded, go to /historical_data/dates_<symbol>.cfg
-6. Only windows binaries (if you need for linux/mac. Please let me know)
-7. All performance time can vary systme to system.
-
-## Calculation
