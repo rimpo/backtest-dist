@@ -19,6 +19,8 @@ The strategy can be stopped using these stop conditions
 
 A strategy can have multiple stop conditions. All legs will be closed on any one conditions hit.
 
+**Note: if in same candle stop and leg exit conditions is hit then exit takes precedence for the leg.**
+
 | Type | Fields | Example | Descritption |
 | ----- | ----------- | ----------- | ------------ |
 | stop_type_time | time | `13:20` | The strategy will be stopped at 13:20. |
@@ -85,6 +87,8 @@ if entry_type_time is set 09:20 the premium used for enter the leg is `294.06`.
 ## exit_type_ltp_loss_percent uses High of the candle to check trigger
 
 Entry Price with Slippage is considered in this calculation (slippage from yml configuration)
+The high/low is checked for condition but the exit price is calculated based on percentage set.
+
 Condition:
 
 For positive `percent`:
@@ -109,7 +113,7 @@ Example:
 Calculation: 237.85 + (237.85 * 40.0)/100.0 < 333.07 = 332.99 < 333.0
 
 Therefore, The trigger will happen for candle:`2022-12-19 12:37` high 333.07
-The exitPrice will will be picked `332.99` and the time of exit `2022-12-19 12:37` (the slippage will be additionally added in the end)
+The exitPrice will be picked `332.99` and the time of exit `2022-12-19 12:37` (the slippage will be additionally added in the end)
 
 ## exit_type_underlying_moved_percent & exit_type_underlying_moved_points
 
