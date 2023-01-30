@@ -1,14 +1,14 @@
 strategy:
   name: Strangle
-  slippage: 1.1
+  slippage: 1.0
   symbol: banknifty
   # 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday
   days_to_run: 1,2,3,4,5
   stop:
-    - type: stop_type_time
-      time: 15:25
+    # - type: stop_type_time
+    # time: 15:25
     - type: stop_type_mtm_amount
-      amount: -10000
+      amount: -15000
     # type: stop_type_
   legs:
     - lots: 4
@@ -24,15 +24,15 @@ strategy:
         #max_ltp: 80
       entry:
         - type: entry_type_time
-          time: "09:18"
+          time: "09:20"
       exit:
         - type: exit_type_time
-          time: "15:25"
+          time: "15:20"
         - type: exit_type_ltp_loss_percent
-          percent: 40.0
-        - type: exit_type_underlying_moved_points
-          points: 400
-          underlying: spot
+          percent: 50.0
+        #- type: exit_type_underlying_moved_points
+        #  points: 400
+        #  underlying: spot
     - lots: 4
       buy_or_sell: sell
       ce_or_pe: PE
@@ -46,12 +46,12 @@ strategy:
         #max_ltp: 80
       entry:
         - type: entry_type_time
-          time: "09:18"
+          time: "09:20"
       exit:
         - type: exit_type_time
-          time: "15:25"
+          time: "15:20"
         - type: exit_type_ltp_loss_percent
-          percent: 40.0
-        - type: exit_type_underlying_moved_points
-          points: -400
-          underlying: spot
+          percent: 50.0
+        #- type: exit_type_underlying_moved_points
+        #  points: -400
+        #  underlying: spot

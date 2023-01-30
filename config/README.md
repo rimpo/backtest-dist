@@ -1,4 +1,4 @@
-# **Guide for updating Config yml**
+# **Guide for updating config yml**
 
 The config used by strategy is in yml format e.g [straddle](./straddle.yml)
 
@@ -63,7 +63,7 @@ The leg can have multiple exit conditions. In case of any one condition is hit t
 | exit_type_underlying_moved_points | points | `200` or `-200` | leg will exit when underlying moves by 200 or -200 |
 |  | underlying | `spot` or `future` |  |
 
-# Know the Calculation for signals
+# Understanding calculation by signals
 
 OHLC = O -> Open, H -> High, L -> Low, C -> Close
 
@@ -71,10 +71,11 @@ OHLC = O -> Open, H -> High, L -> Low, C -> Close
 
 The premium is selected from the candle Opens.
 
-```
 Example:
 
-022-12-19 09:19 OHLC 314.09 324.00 286.65 288.00
+```
+
+2022-12-19 09:19 OHLC 314.09 324.00 286.65 288.00
 2022-12-19 09:20 OHLC 294.06 304.25 281.04 304.25
 2022-12-19 09:21 OHLC 304.15 314.95 270.25 270.25
 ```
@@ -87,14 +88,17 @@ Entry Price with Slippage is considered in this calculation (slippage from yml c
 Condition:
 
 For positive `percent`:
-entryPrice + entryPrice*`percent`/100.0 < candle.High
+
+- entryPrice + entryPrice*`percent`/100.0 < candle.High
 
 For negative `percent`:
-entryPrice - entryPrice*`percent`/100.0 > candle.Low
+
+- entryPrice - entryPrice*`percent`/100.0 > candle.Low
 
 Example:
-entryPrice = 237.85  (slippage from yml is considered)
-percent = 40.0
+
+- entryPrice = 237.85  (slippage from yml is considered)
+- percent = 40.0
 
 ```
 2022-12-19 12:36 OHLC 322.07 325.55 319.45 322.03
@@ -107,29 +111,33 @@ Calculation: 237.85 + (237.85 * 40.0)/100.0 < 333.07 = 332.99 < 333.0
 Therefore, The trigger will happen for candle:`2022-12-19 12:37` high 333.07
 The exitPrice will will be picked `332.99` and the time of exit `2022-12-19 12:37` (the slippage will be additionally added in the end)
 
-## exit_type_underlying_moved_percent exit_type_underlying_moved_points
+## exit_type_underlying_moved_percent & exit_type_underlying_moved_points
 
-underlyingEntryOpen = Open of Underlying at Entry
-underlyingLatestHigh = Current Candle High of Underlying
-underlyingLatestLow = Current Candle Low of Underlying
+- underlyingEntryOpen = Open of Underlying at Entry
+- underlyingLatestHigh = Current Candle High of Underlying
+- underlyingLatestLow = Current Candle Low of Underlying
 
 For positive `percent`:
-`((underlyingLatestHigh - underlyingEntryOpen) / underlyingEntryOpen )*100 > percent`
+
+- ((underlyingLatestHigh - underlyingEntryOpen) / underlyingEntryOpen )*100 > `percent`
 
 For negative `percent`:
-`((underlyingLatestLow - underlyingEntryOpen) / underlyingEntryOpen )*100 < percent`
+
+- ((underlyingLatestLow - underlyingEntryOpen) / underlyingEntryOpen )*100 < `percent`
 
 In case of the above condition is hit, the exit price is a calculated price.
 
-Underlying OHLC = U_O, U_H, U_L, U_C
-Option Leg OHLC = O, H, L, C
+- Underlying OHLC = U_O, U_H, U_L, U_C
+- Option Leg OHLC = O, H, L, C
 
 CE Option Leg:
-    correction percentage = CP = (U_L - U_C() / (U_H - H_L)
-    Exit Price = CP * (H - L) + L
 
-PE Option Leg
-    correction percentage = CP = (U_H - U_C() / (U_H - H_L)
-    Exit Price = CP * (H - L) + L
+- correction percentage = CP = (U_L - U_C() / (U_H - H_L)
+- Exit Price = CP * (H - L) + L
+
+PE Option Leg:
+
+- correction percentage = CP = (U_H - U_C() / (U_H - H_L)
+- Exit Price = CP * (H - L) + L
 
 Note: The important distinction for these signals is that it will add a fixed additional 0.5 slippage to exit_price (slippage of yml is calculated on top of it).
