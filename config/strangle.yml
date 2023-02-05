@@ -14,8 +14,8 @@ strategy:
       buy_or_sell: sell
       ce_or_pe: CE
       strike_selection:
-        type: strike_selection_type_distance_from_spot
-        distance_from_spot: 50
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 50
         #type: strike_selection_type_near_ltp
         #near_ltp: 15
         #type: strike_selection_type_range_ltp
@@ -36,8 +36,8 @@ strategy:
       buy_or_sell: sell
       ce_or_pe: PE
       strike_selection:
-        type: strike_selection_type_distance_from_spot
-        distance_from_spot: -50
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: -50
         #type: strike_selection_type_near_ltp
         #near_ltp: 15
         #type: strike_selection_type_range_ltp

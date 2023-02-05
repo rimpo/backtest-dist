@@ -1,57 +1,261 @@
 strategy:
-  name: Strangle
-  slippage: 1.0
+  name: USSNBN0920
+  slippage: 1.10
   symbol: banknifty
   # 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday
-  days_to_run: 1,2,3,4,5
+  days_to_run: 1,2,3,4
   stop:
-    # - type: stop_type_time
-    # time: 15:25
+    - type: stop_type_time
+      time: 15:20
     - type: stop_type_mtm_amount
       amount: -15000
-    # type: stop_type_
   legs:
-    - lots: 4
+    # first short straddle
+    # ---------------------------------------------
+    - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
       strike_selection:
-        type: strike_selection_type_distance_from_spot
-        distance_from_spot: 0
-        #type: strike_selection_type_near_ltp
-        #near_ltp: 50
-        #type: strike_selection_type_range_ltp
-        #min_ltp: 50
-        #max_ltp: 80
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
       entry:
         - type: entry_type_time
-          time: "09:20"
+          time: 09:20
       exit:
         - type: exit_type_time
-          time: "15:20"
+          time: 15:25
         - type: exit_type_ltp_loss_percent
           percent: 50.0
-        #- type: exit_type_underlying_moved_points
-        #  points: 400
-        #  underlying: spot
-    - lots: 4
+
+    - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
       strike_selection:
-        type: strike_selection_type_distance_from_spot
-        distance_from_spot: 0
-        #type: strike_selection_type_near_ltp
-        #near_ltp: 50
-        #type: strike_selection_type_range_ltp
-        #min_ltp: 50
-        #max_ltp: 80
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
       entry:
         - type: entry_type_time
-          time: "09:20"
+          time: 09:20
       exit:
         - type: exit_type_time
-          time: "15:20"
+          time: 15:25
         - type: exit_type_ltp_loss_percent
           percent: 50.0
-        #- type: exit_type_underlying_moved_points
-        #  points: -400
-        #  underlying: spot
+    # ---------------------------------------------
+
+    # CE side SL deploy straddle
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 0
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 0
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+    #------------------------------------------------
+
+    # PE side SL deploy straddle
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 1
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 1
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    # ---------------------------------------------------------
+
+    # CE side SL - CE side SL deploy straddle
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 0
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 0
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 2
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 2
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 3
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 3
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 4
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 4
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: CE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 5
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
+
+    - lots: 1
+      buy_or_sell: sell
+      ce_or_pe: PE
+      strike_selection:
+        type: strike_selection_type_distance_from_atm
+        distance_from_atm: 0
+      entry:
+        - type: entry_type_on_leg_exit
+          leg_id: 5
+      exit:
+        - type: exit_type_time
+          time: 15:25
+        - type: exit_type_ltp_loss_percent
+          percent: 50.0
