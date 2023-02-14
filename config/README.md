@@ -79,14 +79,16 @@ The leg can have multiple exit conditions. In case of any one condition is hit t
 | Type | Fields | Example | Description |
 | ----- | ----------- | ----------- | ------------ |
 | exit_type_time | time | `15:20` | leg will exit at time 15:20 |
-| exit_type_ltp_loss_percent | percent | `40.0` | leg will exit when premium price will increase by 40% from entry price. Note high will be considered for sell orders (low for buy orders) |
+| exit_type_sl_percent | percent | `40.0` | leg will exit when premium price will increase by 40% from entry price. Note high will be considered for sell orders (low for buy orders) |
 | exit_type_underlying_moved_percent | percent | `1.0` | leg will exit when underlying moves by 1% |
 |  | underlying | `spot` or `future` |  |
 | exit_type_underlying_moved_points | points | `200` or `-200` | leg will exit when underlying moves by 200 or -200 |
 |  | underlying | `spot` or `future` |  |
 | exit_type_on_leg_exit | leg_id | `0` or `1` | The leg will exit if the leg_id is exited. First leg entry in yml will be leg_id=0 and the next one will be 1.  |
+| exit_type_sl_percent_on_leg_exit_new_sl_percent | percent | `35.0` |  same as exit_type_sl_percent
+| | leg_id | `0` or `1`| The leg which exit will cause the current spot loss move to cost (same as entry price)
 
-Note: The dependencies of on other leg should be upward. Otherwise, we might face issue like the exit on other leg exit is happening in next minute.
+Note: The dependencies of other leg if not upward in yml, the trigger will happen in next tick (or minute)
 
 Exit Price logic can be controlled by setting exit_price_type
 
@@ -140,7 +142,7 @@ if exit_price_type set `exit_price_type_use_close`:
     if entry_type_time is set 09:20 the premium used for enter the leg is `294.06`.
 ```
 
-## exit_type_ltp_loss_percent uses High of the candle to check trigger
+## exit_type_sl_percent uses High of the candle to check trigger
 
 Entry Price with Slippage is considered in this calculation (slippage from yml configuration)
 The high/low is checked for condition but the exit price is calculated based on percentage set.

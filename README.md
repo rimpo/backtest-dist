@@ -39,7 +39,7 @@ You are ready for running strategy.
 ## Usage
 
 ```
-strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse_bin.db -config=./config/strangle.yml -output=./output.csv
+strategy -start-dt=2018-01-01 -end-dt=2022-12-30 -db=./db/log/nse_bin.db -config=./config/strangle.yml,./config/straddle.yml -output=./output.csv -slippage=1.0
 ```
 
 - output.csv will contain the order executed in the strategy which can be used to analyze the results.

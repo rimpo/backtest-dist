@@ -1,17 +1,17 @@
 strategy:
   name: USSNBN0920
-  slippage: 1.10
   symbol: banknifty
   # 0=Sunday 1=Monday 2=Tuesday 3=Wednesday 4=Thursday 5=Friday 6=Saturday
-  days_to_run: 1,2,3,4
+  days_to_run: 4
   stop:
     - type: stop_type_time
       time: 15:20
     - type: stop_type_mtm_amount
-      amount: -15000
+      amount: -6000
   legs:
     # first short straddle
     # ---------------------------------------------
+    #0
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -24,9 +24,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #1
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -39,11 +39,12 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
     # ---------------------------------------------
 
     # CE side SL deploy straddle
+    #2
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -56,9 +57,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #3
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -71,11 +72,12 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
     #------------------------------------------------
 
     # PE side SL deploy straddle
+    #4
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -88,9 +90,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #5
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -103,43 +105,13 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
 
     # ---------------------------------------------------------
 
     # CE side SL - CE side SL deploy straddle
-
-    - lots: 1
-      buy_or_sell: sell
-      ce_or_pe: CE
-      strike_selection:
-        type: strike_selection_type_distance_from_atm
-        distance_from_atm: 0
-      entry:
-        - type: entry_type_on_leg_exit
-          leg_id: 0
-      exit:
-        - type: exit_type_time
-          time: 15:25
-        - type: exit_type_ltp_loss_percent
-          percent: 50.0
-
-    - lots: 1
-      buy_or_sell: sell
-      ce_or_pe: PE
-      strike_selection:
-        type: strike_selection_type_distance_from_atm
-        distance_from_atm: 0
-      entry:
-        - type: entry_type_on_leg_exit
-          leg_id: 0
-      exit:
-        - type: exit_type_time
-          time: 15:25
-        - type: exit_type_ltp_loss_percent
-          percent: 50.0
-
+    #6
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -152,9 +124,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #7
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -167,9 +139,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #8
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -182,9 +154,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #9
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -197,9 +169,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #10
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -212,9 +184,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #11
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -227,9 +199,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #12
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: CE
@@ -242,9 +214,9 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
-
+    #13
     - lots: 1
       buy_or_sell: sell
       ce_or_pe: PE
@@ -257,5 +229,5 @@ strategy:
       exit:
         - type: exit_type_time
           time: 15:25
-        - type: exit_type_ltp_loss_percent
+        - type: exit_type_sl_percent
           percent: 50.0
